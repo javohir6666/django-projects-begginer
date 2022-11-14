@@ -1,0 +1,58 @@
+{% extends 'save_password/base.html' %}
+
+{% block  body %}
+<h3 class="text-light text-center">You Login as: <span class="text-warning">{{request.session.user}}</span></h3>
+<div class="container my-5 px-5 py-5 border">
+
+    <div class="row">
+
+        <div class="col-sm-6 w-100 text-center">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Account Password</h5>
+                    <p class="card-text"><strong id="para">***********</strong></p>
+                    <a class="btn btn-danger" id="trigger" onclick="show_pwd()">Show</a>
+                </div>
+            </div>
+        </div>
+
+        {% for password in passwords %}
+            <div class="col-sm-6 w-50 my-2">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-danger">{{password.title}}</h5>
+                        <hr>
+                        <p class="card-text"><strong>Decoded: </strong>{{password.pwd}} <a href="{% url 'edit' password.id %}" style="float: right; margin-right: 20px;" class="btn btn-sm btn-primary">Edit</a></p>
+                        <p class="card-text"><strong>Encoded: </strong>{{password.hide_pwd}}</p>
+
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    var a = "{{user_account.pwd}}";
+    var p = document.getElementById('para');
+    var btn = document.getElementById('trigger');
+    var is_active = 0;
+    function show_pwd() {
+        if(is_active == 0){
+            p.innerHTML = a;
+            btn.innerHTML = "Hide";
+            is_active = 1;
+        }
+        else{
+            p.innerHTML = "*************";
+            btn.innerHTML = "Show";
+            is_active = 0;
+        }
+
+
+    }
+</script>
+{% endblock %}

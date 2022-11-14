@@ -1,0 +1,25 @@
+{% extends 'save_password/base.html' %}
+
+{% block body %}
+    <div class="container w-25 rounded border my-5 bg-dark py-3 px-3">
+        <h2 class="text-light">Login</h2>
+        <form action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label text-light">Name</label>
+                <input type="text" class="form-control" name="uname" id="exampleFormControlInput1">
+            </div>
+
+
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label text-light">Password</label>
+                <input type="password" class="form-control" name="pwd" id="exampleFormControlTextarea1" name="">
+            </div>
+
+            <div class="mb-3">
+                <input type="submit" class="btn btn-primary" id="exampleFormControlTextarea1" value="Login">
+            </div>
+        </form>
+
+    </div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'save_password/base.html' %}
+{% block body %}
+    <div class="container px-5 py-5 border">
+        <div class="card w-50 px-5 py-5 mx-auto">
+            <h2>Save Password</h2>
+            <hr>
+            <form action="{% url 'save_pwd' %}" method="post">
+                {% csrf_token %}
+                <label for="title">Title</label>
+                <input type="text" id="title" class="form-control" name="title">
+
+                <br>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" class="form-control" name="pwd">
+
+                <br>
+
+                <input type="submit" value="Save Password" class="btn btn-primary">
+            </form>
+
+        </div>
+    </div>
+{% endblock %}

@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "ckeditor",
     'crispy_forms',
     'save_password',
+    'todo',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

@@ -6,3 +6,5 @@ def homeView(request, *args, **kwargs):
         return redirect("login-user")
     context = {}
     return render(request, 'chatapp/index.html')
+def index(request):
+    return render(request, 'index.html')

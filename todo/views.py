@@ -1,9 +1,7 @@
 from django.shortcuts import render, redirect
-from rest_framework import generics
 from django.http import HttpResponseRedirect
 from .models import Todo
 from django.urls import reverse_lazy
-from .serializers import TodoSerializer
 from .forms import TodoForm
 from django.views.generic.edit import UpdateView, DeleteView
 from django.views import View
@@ -37,17 +35,6 @@ def isDone(request, pk):
         todo.save()
 
     return redirect('todo-index')
-        
-   
-class TodoGetCreate(generics.ListCreateAPIView):
-    queryset = Todo.objects.all()
-    serializer_class = TodoSerializer
-
-
-class TodoUpdateDelete(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Todo.objects.all()
-    serializer_class = TodoSerializer
-    
     
 class TodoDeleteView(DeleteView):
     model = Todo
